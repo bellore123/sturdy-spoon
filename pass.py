@@ -1,15 +1,12 @@
-import re
+records = []
 
-passwords = input().split(',')
+while True:
+    line = input()
+    if not line:
+        break
+    name, age, height = line.split(",")
+    records.append((name, age, height))
 
-valid_passwords = []
+records.sort(key=lambda x: (x[0], int(x[1]), int(x[2])))
 
-for pwd in passwords:
-    if (6 <= len(pwd) <= 12 and
-        re.search("[a-z]", pwd) and
-        re.search("[A-Z]", pwd) and
-        re.search("[0-9]", pwd) and
-        re.search("[$#@]", pwd)):
-        valid_passwords.append(pwd)
-
-print(",".join(valid_passwords))
+print(records)
